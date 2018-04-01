@@ -1,3 +1,16 @@
+-- FUNÇÕES AUXILIARES 
+function desenharPersonagens(person)
+	love.graphics.draw(
+		person:getImg(), 
+		person:getX(), 
+		person:getY(), 
+		person:getOrientation(),
+		0.9, 0.9, 
+		person:getImg():getWidth()/2, 
+		person:getImg():getHeight()/2
+	)
+end
+
 function movement(control, person, velocidade, right, left, up, down)
 	if k.isDown (right) then
 		person.x = person.x + (velocidade * control);
