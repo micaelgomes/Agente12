@@ -1,3 +1,6 @@
+-- CLASSE PRINCIPAL DE BALAS DO JOGO
+-- mudar imagem ????
+
 Bullet = {}
 Bullet_mt = {}
 Bullet_mt.__index = Bullet
@@ -6,9 +9,10 @@ function Bullet:new()
 	local mediaObject = {
 		bulletTable = {},  
 		canShoot = true, 
-	    canShootTimer = 0, 
+	    canShootTimer = 1.3, 
 	    speedShoot = 2000,
-	    img = love.graphics.newImage("item/bullet.png")
+		img = love.graphics.newImage("item/bullet.png"),
+		quant = 0
 	}
 
 	setmetatable(mediaObject, Bullet_mt)
@@ -46,4 +50,12 @@ end
 
 function Bullet:setImg(image)
 	self.img = image
+end
+
+function Bullet:getQuant()
+	return self.quant
+end
+
+function Bullet:setQuant(quant)
+	self.quant = quant
 end

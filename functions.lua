@@ -1,4 +1,8 @@
 -- FUNÇÕES AUXILIARES 
+-- Objetivo de diminuir a quantidade de linhas da main
+
+-- @param: um personargem
+-- @return: personargem desenhado em tela
 function desenharPersonagens(person)
 	love.graphics.draw(
 		person:getImg(), 
@@ -11,42 +15,26 @@ function desenharPersonagens(person)
 	)
 end
 
-function movement(control, person, velocidade, right, left, up, down)
-	if k.isDown (right) then
-		person.x = person.x + (velocidade * control);
-		person.orientacao = 0;
-	elseif k.isDown (left) then
-		person.x = person.x - (velocidade * control);
-		person.orientacao = 3.14;
-	elseif k.isDown (up) then
-		person.y = person.y - (velocidade * control);
-		person.orientacao = 3.14/2*-1;	
-	elseif k.isDown (down) then
-		person.y = person.y + (velocidade * control);
-		person.orientacao = 3.14/2;
-	end	
-end
+-- @param: 
+-- @return: 
+function refreshBullet(person, balaTabela, dt)
 
-function shoot(control, tabela, person, canShoot, canShootTimer, imagem)
-	
-end
-
-function refreshBala(control, tabela, bala, velocidadeTiro)
-	for i,bala in ipairs(tabela) do
+	for k, bala in ipairs(balaTabela) do
 		if bala.orientacao == 0 then
-	    	bala.x = bala.x + (velocidadeTiro * control);
-    	elseif bala.orientacao == 3.14/2*-1 then
-		    bala.y = bala.y - (velocidadeTiro * control);
+			bala.x = bala.x + (person:getBullet():getSpeedShoot() * dt)
+		elseif bala.orientacao == 3.14/2*-1 then
+			bala.y = bala.y - (person:getBullet():getSpeedShoot() * dt)
 		elseif bala.orientacao == 3.14 then
-		    bala.x = bala.x - (velocidadeTiro * control);
+			bala.x = bala.x - (person:getBullet():getSpeedShoot() * dt)
 		else
-		    bala.y = bala.y + (velocidadeTiro * control);
+			bala.y = bala.y + (person:getBullet():getSpeedShoot() * dt)
 		end
-		  
-		if bala.x <= 0 or bala.x >= g.getWidth() then
-			table.remove(tabela, i);
-		elseif bala.y <= 0 or bala.y >= g.getHeight() then
-		    table.remove(tabela, i);
+	
+		-- bala limitada pela tela
+		if bala.x <= 0 or bala.x >= 800 then
+			table.remove(balaTabela, k)
+		elseif bala.y <= 0 or bala.y >= 600 then
+			table.remove(balaTabela, k)
 		end
 	end
 end
