@@ -4,10 +4,10 @@ Game made to obtain the first grade of the course of computer science in the dis
 Using: LOVE2D, Lua;
 
 ### Metas
-..* mecânica de tiros
-..* mudar imagem das balas
-..* Menu
-..* sonorização
+* mecânica de tiros
+* mudar imagem das balas
+* Menu
+* sonorização
 
 ### Definido para teste
 | Item          | Value         | 
