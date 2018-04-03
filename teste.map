@@ -1,0 +1,8 @@
+@DEFINE
+NAME = "Morte ao império"
+FASE = 1
+CONSTRUCTO = 0;1;2
+
+@DATA
+{{1},{1},{1}}
+

@@ -20,10 +20,6 @@ function love.update(dt)
 end
 
 function love.draw()
-	desenharPersonagens(agente12) 
-
-	for k, bala in pairs(balaTabela) do
-		g.draw(bala.img, bala.x, bala.y, bala.orientacao, 0.5, 0.5)
-	end
-
+	drawPerson(agente12) 
+	drawBullet(balaTabela)
 end
